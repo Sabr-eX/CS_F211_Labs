@@ -90,32 +90,6 @@ Node *delete(Node *temp)
     return temp;
 }
 
-// Node *removeRepeatedNodes(Node *head)
-// {
-//     if (head==NULL || head->next==NULL)
-//     {
-//         return head;
-//     }
-
-//     int target = head->data;
-
-//     if (head->next->data == target)
-//     {
-//         while (head->next && head->next->data == target)
-//         {
-//             head = head->next;
-//         }
-
-//         head = removeRepeatedNodes(head->next);
-//     }
-
-//     else
-//     {
-//         head->next = removeRepeatedNodes(head->next);
-//     }
-//     return head;
-// }
-
 Node *removeRepeatedNodes(Node *head)
 {
     Node *dummy = malloc(sizeof(Node));
