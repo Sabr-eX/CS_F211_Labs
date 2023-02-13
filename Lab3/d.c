@@ -111,9 +111,15 @@ int main()
             if (first->next != last)
             {
                 first = first->next;
+                sum1 += first->data;
                 no1++;
                 last = last->prev;
+                sum2 += last->data;
                 no2++;
+            }
+            else
+            {
+                break;
             }
         }
         else if (sum1 < sum2)
