@@ -12,6 +12,13 @@ int main()
     while (lo <= hi)
     {
         mid = (lo + hi) / 2;
+
+        if (mid > 1e9)
+        {
+            hi = mid - 1;
+            continue;
+        }
+
         if (mid * mid < n)
         {
             if ((mid + 1) * (mid + 1) <= n)
