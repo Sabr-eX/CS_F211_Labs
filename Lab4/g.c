@@ -47,7 +47,10 @@ void radixsort(int arr[], int n)
     // of passing digit number, exp is passed. exp is 10^i
     // where i is current digit number
     for (int exp = 1; m / exp > 0; exp *= 10)
+    {
         countSort(arr, n, exp);
+        print(arr, n);
+        }
 }
 
 // A utility function to print an array
@@ -55,6 +58,8 @@ void print(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
         printf("%d ", arr[i]);
+
+    printf("\n");
 }
 
 // Driver Code
@@ -68,6 +73,6 @@ int main()
 
     // Function Call
     radixsort(arr, n);
-    print(arr, n);
+
     return 0;
 }
