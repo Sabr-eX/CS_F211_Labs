@@ -18,7 +18,7 @@ int main()
         a[i] = sum;
         f[a[i] % k]++;
     }
-    int ans = 0;
+    int ans = f[0];
     for (int i = 0; i < k; i++)
     {
         if (f[i] > 2)

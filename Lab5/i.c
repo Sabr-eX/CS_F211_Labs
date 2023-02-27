@@ -1,61 +1,83 @@
 #include <stdio.h>
-#define ll long long
 
-int main()
+#define int long long int
+
+void main()
 {
 
-    ll n, k;
-    scanf("%lld %lld", &n, &k);
-    int arr[n];
-    int numodds = 0;
-    for (int i = 0; i < n; i++)
+    int inputLength, noOfOddNeeded;
+    scanf("%lld %lld", &inputLength, &noOfOddNeeded);
+
+    int input[inputLength];
+
+    // We count the number of odd numbers
+    int noOfOdds = 0;
+    for (int i = 0; i < inputLength; i++)
     {
-        scanf("%d", &arr[i]);
-        if (arr[i] & 1)
+        scanf("%lld", &input[i]);
+
+        if (input[i] % 2 == 1)
+            noOfOdds++;
+    }
+
+    // We keep track of odd indices
+    int oddIndices[noOfOdds], c = 0;
+    for (int i = 0; i < inputLength; i++)
+    {
+        // Then we keep track of where odd numbers are there
+        if (input[i] % 2 == 1)
         {
-            numodds++;
+            oddIndices[c] = i;
+            // c is used to change the indices of the array of oddIndices
+            c++;
         }
     }
 
-    ll ans = 0;
+    // Empty array to keep track of answer
+    int answer = 0;
 
-    int oddindex[numodds];
-    int ptr = 0;
-    for (int i = 0; i < n; i++)
+    // Array to loop through all the odd indices
+    for (int i = 0; i < noOfOdds - noOfOddNeeded + 1; i++)
     {
-        if (arr[i] & 1)
-        {
-            oddindex[ptr++] = i;
-        }
-    }
+        int leftIndex = i;
+        int rightIndex = i + noOfOddNeeded - 1;
 
-    for (int i = 0; i <= (numodds - k); i++)
-    {
-        int j = (i + k - 1);
-        ll startOptions = oddindex[i];
-        ll endOptions = -oddindex[j];
-        if (i == 0)
+        // left is used to track the first index
+        int left = oddIndices[leftIndex];
+        // right is used to track the second index
+        int right = oddIndices[rightIndex];
+        printf("\n%lld %lld", left, right);
+
+        // These counters are used to calculate how many steps we can take on left and right
+        int leftcounter = 1;
+        int rightcounter = 1;
+
+        // If i = 0, that means there's no odd number before this
+        // So left counter = the index of the first odd number + 1
+        if (leftIndex == 0)
         {
-            startOptions++;
+            leftcounter = oddIndices[leftIndex] + 1;
         }
         else
         {
-            startOptions -= oddindex[i - 1];
+            leftcounter = oddIndices[leftIndex] - oddIndices[leftIndex - 1];
         }
 
-        if (j == numodds - 1)
+        // If rightIndex which is basically the second index
+        // If this is equal to noOfOdds - 1, that would mean there's no element after this that is odd
+        // So we add inputlength - that index
+        if (rightIndex == noOfOdds - 1)
         {
-            endOptions += n;
+            rightcounter = inputLength - oddIndices[rightIndex];
         }
         else
         {
-            endOptions += oddindex[j + 1];
+            rightcounter = oddIndices[rightIndex + 1] - oddIndices[rightIndex];
         }
 
-        ans += (startOptions * endOptions);
+        answer += (leftcounter * rightcounter);
+        printf(" %lld %lld %lld", leftcounter, rightcounter, answer);
     }
 
-    printf("%lld\n", ans);
-
-    return 0;
+    printf("\n%lld", answer);
 }
