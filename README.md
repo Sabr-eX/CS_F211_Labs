@@ -14,3 +14,6 @@ F, J
 
 ### Lab 4
 A, G, J
+
+### Lab 5
+A, B, G, H, I
