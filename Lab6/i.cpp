@@ -42,8 +42,20 @@ int main()
 
     if (stir.length() != 0)
     {
-        stk.push(stir);
-        stir.clear();
+        if (stir == "..")
+        {
+            stk.pop();
+            stir.clear();
+        }
+        else if (stir == ".")
+        {
+            stir.clear();
+        }
+        else if (stir.length() != 0)
+        {
+            stk.push(stir);
+            stir.clear();
+        }
     }
 
     while (!stk.empty())
@@ -54,7 +66,11 @@ int main()
     }
 
     stir = '/' + stir;
-    stir.erase(stir.end() - 1);
+
+    if (stir.length() != 1)
+    {
+        stir.erase(stir.end() - 1);
+    }
 
     cout << stir << endl;
 
