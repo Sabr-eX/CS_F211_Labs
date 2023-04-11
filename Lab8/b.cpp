@@ -19,6 +19,7 @@ int main()
     int mid = n / 2;
     int i = mid;
     int flag = 0;
+    int c =  0;
     for (i = n / 2; i < n; i++)
     {
 
@@ -29,6 +30,7 @@ int main()
         else if (a[i] < a[n - 1 - i])
         {
             a[i] = a[n - 1 - i];
+            c++;
         }
         else
         {
@@ -41,6 +43,7 @@ int main()
                 }
                 a[i] = a[n - 1 - i];
                 flag++;
+                c++;
             }
             else if (a[mid] == 9 && flag == 0)
             {
@@ -52,10 +55,12 @@ int main()
                 a[n - 1 - h]++;
                 a[i] = a[n - 1 - i];
                 flag++;
+                c++;
             }
             else
             {
                 a[i] = a[n - 1 - i];
+                c++;
             }
         }
     }

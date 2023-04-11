@@ -49,8 +49,14 @@ int countTriangles(pair<int, int> P[], int N)
 // Driver Code to test above function
 int main()
 {
-    pair<int, int> P[] = {{0, 0}, {2, 0}, {1, 1}, {2, 2}};
-    int N = sizeof(P) / sizeof(P[0]);
-    cout << countTriangles(P, N) << endl;
+    int n;
+    cin >> n;
+
+    pair<int, int> P[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> P[i].first >> P[i].second;
+    }
+    cout << countTriangles(P, n) << endl;
     return 0;
 }

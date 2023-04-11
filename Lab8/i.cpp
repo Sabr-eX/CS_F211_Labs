@@ -7,16 +7,13 @@ int main()
     int n, k;
     cin >> n >> k;
     map<int, int> loss;
-    for (int i = 0; i < k; i++)
-    {
-        loss.insert({i + 1, 0});
-    }
-
+    
     while (n--)
     {
         int w, l;
         cin >> w >> l;
         loss[l]++;
+        loss[w] += 0;
     }
 
     for (int i = 0; i < k; i++)
