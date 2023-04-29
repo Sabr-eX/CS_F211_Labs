@@ -16,4 +16,4 @@ F, J
 C, J
 
 ### Lab 5
-C, I
+A, B, G
