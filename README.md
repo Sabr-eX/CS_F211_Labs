@@ -13,7 +13,7 @@ H
 F, J
 
 ### Lab 4
-A, G, J
+C, J
 
 ### Lab 5
 C, I
